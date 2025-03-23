@@ -1,2 +1,2 @@
 # strengh_and_honor
-repo with application for fantasy football application
+repo with fantasy football application
