@@ -2,14 +2,16 @@ import streamlit as st
 import os
 import pandas as pd
 from datetime import datetime
+import pytz
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from google.oauth2.service_account import Credentials
 
-
-current_dt = datetime.now()
+est_tz = pytz.timezone("America/New_York")  # Change this to your timezone
+current_dt = datetime.now(est_tz)
 st.title(':crossed_swords::shield: Strength and Honor :shield::crossed_swords:')
 st.markdown("**Free Agency Intake Form**")  # Bold
+st.text("Please send all trades to roger.commish.goodell@gmail.com")
 
 team_names = ["The Dude", "Crusaders", "BEATDOWN CREW", "BENCHWARMERS", "Dominators", "MidKnight Train",
                 "Conquerors", "Dreamteam", "Football Mama", "Renegades", "Wranglers", "Theheartbreakkid" ] 
