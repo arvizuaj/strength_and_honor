@@ -316,16 +316,4 @@ if st.button("Submit!",type="primary",help="Submit When You're Done With All You
 st.write(df_transactions)
 
 st.markdown("<span style='color:red; font-size:12px;'>This form allows for 10 total transactions at a time</span>", unsafe_allow_html=True)
-
-
-SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
-
-# Load credentials and specify the scope
-if "gcp_service_account" in st.secrets:
-    credentials = Credentials.from_service_account_info(
-        st.secrets["gcp_service_account"], scopes=SCOPES
-    )
-    client = gspread.authorize(credentials)
-    st.success("Successfully authenticated with Google Sheets!")
-else:
-    st.error("Google credentials not found! Please check Streamlit Secrets.")
+st.markdown("<span style='color:red; font-size:12px;'>Please send all trades to roger.commish.goodell@gmail.com</span>", unsafe_allow_html=True)
