@@ -9,6 +9,7 @@ from google.oauth2.service_account import Credentials
 
 est_tz = pytz.timezone("America/New_York")  # Change this to your timezone
 current_dt = datetime.now(est_tz)
+current_dt = current_dt.strftime("%Y-%m-%d %H:%M")
 st.title(':crossed_swords::shield: Strength and Honor :shield::crossed_swords:')
 st.markdown("**Free Agency Intake Form**")  # Bold
 
@@ -16,20 +17,20 @@ team_names = ["The Dude", "Crusaders", "BEATDOWN CREW", "BENCHWARMERS", "Dominat
                 "Conquerors", "Dreamteam", "Football Mama", "Renegades", "Wranglers", "Theheartbreakkid" ] 
 options = ['Bid', 'Cut']
 list_of_transactions = []
-df_transactions = pd.DataFrame(columns=['Team Name', 'Player', 'Action', 'Salary', 'DateTime'])
+df_transactions = pd.DataFrame(columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
 
 
 #SELECT YOUR TEAM NAME
 ##--------------------------------------
-selected_option_name = st.selectbox("Please Select Your Team Name", team_names)
+selected_option_name = st.selectbox("Please select your team name", team_names)
 
 
-user_input_player = st.text_input("Please Type the Player Name",key='first_selection_player')
-selected_option_type = st.selectbox("Please Select the Transaction Type", options,key='first_trans')
+user_input_player = st.text_input("Please type the player name",key='first_selection_player')
+selected_option_type = st.selectbox("Please select the transaction type", options,key='first_trans')
 
 
 if selected_option_type == 'Bid':
-    user_input_salary = st.text_input("Please Input your Bid",key='first_salary')
+    user_input_salary = st.text_input("Please input your bid",key='first_salary')
 else:
     user_input_salary = 0
     st.write("Please Submit Below")
@@ -50,11 +51,11 @@ if st.button("+Add Player Transaction", help="Click If You Need to Bid/Cut Anoth
     st.session_state.button_clicked = True
 
 if st.session_state.button_clicked:
-    user_input_player2 = st.text_input("Please Type the Player Name",key='second_selection_player')
-    selected_option_type2 = st.selectbox("Please Select the Transaction Type", options, key='second_trans')
+    user_input_player2 = st.text_input("Please type the player name",key='second_selection_player')
+    selected_option_type2 = st.selectbox("Please select the transaction type", options, key='second_trans')
 
     if selected_option_type2 == 'Bid':
-        user_input_salary2 = st.text_input("Please Input your Bid",key='second_salary')
+        user_input_salary2 = st.text_input("Please input your bid",key='second_salary')
         #st.session_state.show_input = True
     else:
         user_input_salary2 = 0
@@ -74,11 +75,11 @@ if st.session_state.button_clicked:
         st.session_state.button_clicked2 = True
     
     if st.session_state.button_clicked2:
-        user_input_player3 = st.text_input("Please Type the Player Name",key='third_selection_player')
-        selected_option_type3 = st.selectbox("Please Select the Transaction Type", options, key='third_trans')
+        user_input_player3 = st.text_input("Please type the player name",key='third_selection_player')
+        selected_option_type3 = st.selectbox("Please select the transaction type", options, key='third_trans')
 
         if selected_option_type3 == 'Bid':
-            user_input_salary3 = st.text_input("Please Input your Bid",key='third_salary')
+            user_input_salary3 = st.text_input("Please input your bid",key='third_salary')
             #st.session_state.show_input = True
         else:
             user_input_salary3 = 0
@@ -99,11 +100,11 @@ if st.session_state.button_clicked:
             st.session_state.button_clicked3 = True
     
         if st.session_state.button_clicked3:
-            user_input_player4 = st.text_input("Please Type the Player Name",key='fourth_selection_player')
-            selected_option_type4 = st.selectbox("Please Select the Transaction Type", options, key='fourth_trans')
+            user_input_player4 = st.text_input("Please type the player name",key='fourth_selection_player')
+            selected_option_type4 = st.selectbox("Please select the transaction type", options, key='fourth_trans')
 
             if selected_option_type4 == 'Bid':
-                user_input_salary4 = st.text_input("Please Input your Bid",key='fourth_salary')
+                user_input_salary4 = st.text_input("Please input your bid",key='fourth_salary')
                 #st.session_state.show_input = True
             else:
                 user_input_salary4 = 0
@@ -124,11 +125,11 @@ if st.session_state.button_clicked:
                 st.session_state.button_clicked4 = True
     
             if st.session_state.button_clicked4:
-                user_input_player5 = st.text_input("Please Type the Player Name",key='fifth_selection_player')
-                selected_option_type5 = st.selectbox("Please Select the Transaction Type", options, key='fifth_trans')
+                user_input_player5 = st.text_input("Please type the player name",key='fifth_selection_player')
+                selected_option_type5 = st.selectbox("Please select the transaction type", options, key='fifth_trans')
 
                 if selected_option_type5 == 'Bid':
-                    user_input_salary5 = st.text_input("Please Input your Bid",key='fifth_salary')
+                    user_input_salary5 = st.text_input("Please input your bid",key='fifth_salary')
                     #st.session_state.show_input = True
                 else:
                     user_input_salary5 = 0
@@ -150,11 +151,11 @@ if st.session_state.button_clicked:
                     st.session_state.button_clicked5 = True
     
                 if st.session_state.button_clicked5:
-                    user_input_player6 = st.text_input("Please Type the Player Name",key='sixth_selection_player')
-                    selected_option_type6 = st.selectbox("Please Select the Transaction Type", options, key='sixth_trans')
+                    user_input_player6 = st.text_input("Please type the player name",key='sixth_selection_player')
+                    selected_option_type6 = st.selectbox("Please select the transaction type", options, key='sixth_trans')
 
                     if selected_option_type6 == 'Bid':
-                        user_input_salary6 = st.text_input("Please Input your Bid",key='sixth_salary')
+                        user_input_salary6 = st.text_input("Please input your bid",key='sixth_salary')
                         #st.session_state.show_input = True
                     else:
                         user_input_salary6 = 0
@@ -174,11 +175,11 @@ if st.session_state.button_clicked:
                         st.session_state.button_clicked6 = True
     
                     if st.session_state.button_clicked6:
-                        user_input_player7 = st.text_input("Please Type the Player Name",key='sev_selection_player')
-                        selected_option_type7 = st.selectbox("Please Select the Transaction Type", options, key='sev_trans')
+                        user_input_player7 = st.text_input("Please type the player name",key='sev_selection_player')
+                        selected_option_type7 = st.selectbox("Please select the transaction type", options, key='sev_trans')
 
                         if selected_option_type7 == 'Bid':
-                            user_input_salary7 = st.text_input("Please Input your Bid",key='sev_salary')
+                            user_input_salary7 = st.text_input("Please input your bid",key='sev_salary')
                             #st.session_state.show_input = True
                         else:
                             user_input_salary7 = 0
@@ -199,11 +200,11 @@ if st.session_state.button_clicked:
                             st.session_state.button_clicked7 = True
     
                         if st.session_state.button_clicked7:
-                            user_input_player8 = st.text_input("Please Type the Player Name",key='eigth_selection_player')
-                            selected_option_type8 = st.selectbox("Please Select the Transaction Type", options, key='eigth_trans')
+                            user_input_player8 = st.text_input("Please type the player name",key='eigth_selection_player')
+                            selected_option_type8 = st.selectbox("Please select the transaction type", options, key='eigth_trans')
 
                             if selected_option_type8 == 'Bid':
-                                user_input_salary8 = st.text_input("Please Input your Bid",key='eigth_salary')
+                                user_input_salary8 = st.text_input("Please input your bid",key='eigth_salary')
                                 #st.session_state.show_input = True
                             else:
                                 user_input_salary8 = 0
@@ -223,11 +224,11 @@ if st.session_state.button_clicked:
                                 st.session_state.button_clicked8 = True
     
                             if st.session_state.button_clicked8:
-                                user_input_player9 = st.text_input("Please Type the Player Name",key='ninth_selection_player')
-                                selected_option_type9 = st.selectbox("Please Select the Transaction Type", options, key='ninth_trans')
+                                user_input_player9 = st.text_input("Please type the player name",key='ninth_selection_player')
+                                selected_option_type9 = st.selectbox("Please select the transaction type", options, key='ninth_trans')
 
                                 if selected_option_type9 == 'Bid':
-                                    user_input_salary9 = st.text_input("Please Input your Bid",key='ninth_salary')
+                                    user_input_salary9 = st.text_input("Please input your bid",key='ninth_salary')
                                     #st.session_state.show_input = True
                                 else:
                                     user_input_salary9 = 0
@@ -247,11 +248,11 @@ if st.session_state.button_clicked:
                                     st.session_state.button_clicked9 = True
     
                                 if st.session_state.button_clicked9:
-                                    user_input_player10 = st.text_input("Please Type the Player Name",key='tenth_selection_player')
-                                    selected_option_type10 = st.selectbox("Please Select the Transaction Type", options, key='tenth_trans')
+                                    user_input_player10 = st.text_input("Please type the player name",key='tenth_selection_player')
+                                    selected_option_type10 = st.selectbox("Please select the transaction type", options, key='tenth_trans')
 
                                     if selected_option_type10 == 'Bid':
-                                        user_input_salary10 = st.text_input("Please Input your Bid",key='tenth_salary')
+                                        user_input_salary10 = st.text_input("Please input your bid",key='tenth_salary')
                                         #st.session_state.show_input = True
                                     else:
                                         user_input_salary10 = 0
