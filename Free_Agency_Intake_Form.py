@@ -274,7 +274,7 @@ if st.button("Submit!",type="primary",help="Submit When You're Done With All You
     # Define the scope (OLD)
     #scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
     #Define the scope (NEW)
-    SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+    SCOPES = ["https://www.googleapis.com/auth/spreadsheets","https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 
     #PROCESS FOR RUNNING ON LOCAL MACHINE
     # Path to your downloaded credentials.json file
