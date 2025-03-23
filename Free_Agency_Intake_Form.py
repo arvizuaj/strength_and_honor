@@ -271,10 +271,12 @@ if "button_clicked_sub" not in st.session_state:
 if st.button("Submit!",type="primary",help="Submit When You're Done With All Your Transactions", key="first_submit"):
     st.session_state.button_clicked_sub = True
 
-    # Define the scope
-    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    # Define the scope (OLD)
+    #scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    #Define the scope (NEW)
+    SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
-    #OLD PROCESS
+    #PROCESS FOR RUNNING ON LOCAL MACHINE
     # Path to your downloaded credentials.json file
     #creds = ServiceAccountCredentials.from_json_keyfile_name('google_credentials.json', scope)
     # Authenticate and initialize gspread client
@@ -282,9 +284,21 @@ if st.button("Submit!",type="primary",help="Submit When You're Done With All You
 
     #NEW PROCESS
     # Set the path to your credentials file
-# Load credentials from Streamlit secrets
-    credentials = Credentials.from_service_account_info(st.secrets["gcp_service_account"])
-    client = gspread.authorize(credentials)
+    # Load credentials from Streamlit secrets
+
+    # Load credentials and specify the scope
+    if "gcp_service_account" in st.secrets:
+        credentials = Credentials.from_service_account_info(
+            st.secrets["gcp_service_account"], scopes=SCOPES
+        )
+        client = gspread.authorize(credentials)
+        st.success("Successfully authenticated with Google Sheets!")
+    else:
+        st.error("Google credentials not found! Please check Streamlit Secrets.")
+
+    #OLD SCOPES LOGIC
+    #credentials = Credentials.from_service_account_info(st.secrets["gcp_service_account"])
+    #client = gspread.authorize(credentials)
 
 
     # Open a Google Sheet by name
@@ -300,3 +314,16 @@ if st.button("Submit!",type="primary",help="Submit When You're Done With All You
 st.write(df_transactions)
 
 st.markdown("<span style='color:red; font-size:12px;'>This form allows for 10 total transactions at a time</span>", unsafe_allow_html=True)
+
+
+SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+
+# Load credentials and specify the scope
+if "gcp_service_account" in st.secrets:
+    credentials = Credentials.from_service_account_info(
+        st.secrets["gcp_service_account"], scopes=SCOPES
+    )
+    client = gspread.authorize(credentials)
+    st.success("Successfully authenticated with Google Sheets!")
+else:
+    st.error("Google credentials not found! Please check Streamlit Secrets.")
