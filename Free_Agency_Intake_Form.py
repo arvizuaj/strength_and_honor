@@ -281,9 +281,8 @@ if st.button("Submit!",type="primary",help="Submit When You're Done With All You
 
     #NEW PROCESS
     # Set the path to your credentials file
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "google_credentials.json"
-    # Authenticate with Google Sheets
-    credentials = Credentials.from_service_account_file("google_credentials.json")
+# Load credentials from Streamlit secrets
+    credentials = Credentials.from_service_account_info(st.secrets["gcp_service_account"])
     client = gspread.authorize(credentials)
 
 
