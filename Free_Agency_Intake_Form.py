@@ -39,7 +39,7 @@ else:
 #first_entry = st.write("You entered: ({}, {}, {}, {})".format(selected_option_name,user_input_player,selected_option_type,user_input_salary))
 list1 = [selected_option_name, user_input_player,
             selected_option_type,user_input_salary, current_dt]
-temp_df = pd.DataFrame([list1], columns=['Team Name', 'Player', 'Action', 'Salary', 'DateTime'])
+temp_df = pd.DataFrame([list1], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
 df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
 if "button_clicked" not in st.session_state:
@@ -63,7 +63,7 @@ if st.session_state.button_clicked:
 
     list2 = [selected_option_name, user_input_player2,
             selected_option_type2,user_input_salary2,current_dt]
-    temp_df = pd.DataFrame([list2], columns=['Team Name', 'Player', 'Action', 'Salary', 'DateTime'])
+    temp_df = pd.DataFrame([list2], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
     df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
     #Add Player Transaction 2
@@ -87,7 +87,7 @@ if st.session_state.button_clicked:
 
         list3 = [selected_option_name, user_input_player3,
             selected_option_type3,user_input_salary3,current_dt]
-        temp_df = pd.DataFrame([list3], columns=['Team Name', 'Player', 'Action', 'Salary', 'DateTime'])
+        temp_df = pd.DataFrame([list3], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
         df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
 
@@ -112,7 +112,7 @@ if st.session_state.button_clicked:
 
             list4 = [selected_option_name, user_input_player4,
             selected_option_type4,user_input_salary4,current_dt]
-            temp_df = pd.DataFrame([list4], columns=['Team Name', 'Player', 'Action', 'Salary', 'DateTime'])
+            temp_df = pd.DataFrame([list4], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
             df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
 
@@ -137,7 +137,7 @@ if st.session_state.button_clicked:
 
                 list5 = [selected_option_name, user_input_player5,
                 selected_option_type5,user_input_salary5,current_dt]
-                temp_df = pd.DataFrame([list5], columns=['Team Name', 'Player', 'Action', 'Salary', 'DateTime'])
+                temp_df = pd.DataFrame([list5], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
                 df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
 
@@ -163,7 +163,7 @@ if st.session_state.button_clicked:
 
                     list6 = [selected_option_name, user_input_player6,
                     selected_option_type6,user_input_salary6,current_dt]
-                    temp_df = pd.DataFrame([list6], columns=['Team Name', 'Player', 'Action', 'Salary', 'DateTime'])
+                    temp_df = pd.DataFrame([list6], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
                     df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
                     #Add Player Transaction 6
@@ -187,7 +187,7 @@ if st.session_state.button_clicked:
 
                         list7 = [selected_option_name, user_input_player7,
                         selected_option_type7,user_input_salary7,current_dt]
-                        temp_df = pd.DataFrame([list7], columns=['Team Name', 'Player', 'Action', 'Salary', 'DateTime'])
+                        temp_df = pd.DataFrame([list7], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
                         df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
                     
@@ -212,7 +212,7 @@ if st.session_state.button_clicked:
 
                             list8 = [selected_option_name, user_input_player8,
                             selected_option_type8,user_input_salary8,current_dt]
-                            temp_df = pd.DataFrame([list8], columns=['Team Name', 'Player', 'Action', 'Salary', 'DateTime'])
+                            temp_df = pd.DataFrame([list8], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
                             df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
                             #Add Player Transaction 8
@@ -236,7 +236,7 @@ if st.session_state.button_clicked:
 
                                 list9 = [selected_option_name, user_input_player9,
                                 selected_option_type9,user_input_salary9,current_dt]
-                                temp_df = pd.DataFrame([list9], columns=['Team Name', 'Player', 'Action', 'Salary', 'DateTime'])
+                                temp_df = pd.DataFrame([list9], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
                                 df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
                                 #Add Player Transaction 9
@@ -260,7 +260,7 @@ if st.session_state.button_clicked:
 
                                     list10 = [selected_option_name, user_input_player10,
                                     selected_option_type10,user_input_salary10,current_dt]
-                                    temp_df = pd.DataFrame([list10], columns=['Team Name', 'Player', 'Action', 'Salary', 'DateTime'])
+                                    temp_df = pd.DataFrame([list10], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
                                     df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
  
 
