@@ -1,2 +1,2 @@
-# strengh_and_honor
+# strength_and_honor
 repo with fantasy football application
