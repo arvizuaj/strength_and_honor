@@ -307,7 +307,7 @@ if st.button("Submit!",type="primary",help="Submit When You're Done With All You
     sheet = client.open("Free_Agency").sheet1  # Use sheet1 or specify a sheet by name
 
     # Insert data by appending it to the next available row
-    df_transactions["DateTime"] = df_transactions["DateTime"].astype("string")
+    df_transactions["Timestamp"] = df_transactions["Timestamp"].astype("string")
     df_list = df_transactions.values.tolist()
     sheet.insert_rows(df_list, 1)
 
