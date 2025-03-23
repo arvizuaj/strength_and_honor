@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 import pandas as pd
 from datetime import datetime
 import gspread
@@ -261,6 +262,8 @@ if st.session_state.button_clicked:
  
 
 
+
+
 if "button_clicked_sub" not in st.session_state:
     st.session_state.button_clicked_sub = False
 
@@ -270,11 +273,19 @@ if st.button("Submit!",type="primary",help="Submit When You're Done With All You
     # Define the scope
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 
+    #OLD PROCESS
     # Path to your downloaded credentials.json file
-    creds = ServiceAccountCredentials.from_json_keyfile_name('google_credentials.json', scope)
-
+    #creds = ServiceAccountCredentials.from_json_keyfile_name('google_credentials.json', scope)
     # Authenticate and initialize gspread client
-    client = gspread.authorize(creds)
+    #client = gspread.authorize(creds)
+
+    #NEW PROCESS
+    # Set the path to your credentials file
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "google_credentials.json"
+    # Authenticate with Google Sheets
+    credentials = Credentials.from_service_account_file("google_credentials.json")
+    client = gspread.authorize(credentials)
+
 
     # Open a Google Sheet by name
     sheet = client.open("Free_Agency").sheet1  # Use sheet1 or specify a sheet by name
