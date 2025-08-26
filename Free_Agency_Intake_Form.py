@@ -14,7 +14,7 @@ st.title(':crossed_swords::shield: Strength and Honor :shield::crossed_swords:')
 st.markdown("**Free Agency Intake Form**")  # Bold
 
 team_names = ["The Dude", "Crusaders", "BEATDOWN CREW", "BENCHWARMERS", "Dominators", "MidKnight Train",
-                "Conquerors", "Dreamteam", "Football Mama", "Renegades", "Wranglers", "Theheartbreakkid" ] 
+                "Conquerors", "Dreamteam", "Hello Kitty", "Renegades", "Wranglers", "Theheartbreakkid" ] 
 options = ['Bid', 'Cut']
 list_of_transactions = []
 df_transactions = pd.DataFrame(columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
