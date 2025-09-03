@@ -13,8 +13,8 @@ current_dt = current_dt.strftime("%Y-%m-%d %H:%M")
 st.title(':crossed_swords::shield: Strength and Honor :shield::crossed_swords:')
 st.markdown("**Free Agency Intake Form**")  # Bold
 
-team_names = ["The Dude", "Crusaders", "BEATDOWN CREW", "BENCHWARMERS", "Dominators", "MidKnight Train",
-                "Conquerors", "Dreamteam", "Hello Kitty", "Renegades", "Wranglers", "Theheartbreakkid" ] 
+team_names = [" ","Dominators", "The Dude", "Hello Kitty", "MidKnight Train", "BEATDOWN CREW", "Crusaders",
+                "Renegades", "Theheartbreakkid", "BENCHWARMERS", "Dreamteam", "Wranglers", "Conquerors" ] 
 options = ['Bid', 'Cut']
 list_of_transactions = []
 df_transactions = pd.DataFrame(columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
@@ -22,6 +22,7 @@ df_transactions = pd.DataFrame(columns=['Team Name', 'Player', 'Action', 'Salary
 
 #SELECT YOUR TEAM NAME
 ##--------------------------------------
+st.markdown("<span style='color:red; font-size:14px;'># REMEMBER TO SELECT YOUR TEAM NAME BELOW #</span>", unsafe_allow_html=True)
 selected_option_name = st.selectbox("Please select your team name", team_names)
 
 
