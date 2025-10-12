@@ -11,6 +11,8 @@ est_tz = pytz.timezone("America/New_York")  # Change this to your timezone
 current_dt = datetime.now(est_tz)
 current_dt = current_dt.strftime("%Y-%m-%d %H:%M")
 st.title(':crossed_swords::shield: Strength and Honor :shield::crossed_swords:')
+st.image("https://cdn.mississippitoday.org/wp-content/uploads/2017/07/07054729/AP_882940498833-scaled.jpg", use_container_width=True)
+
 st.markdown("**Free Agency Intake Form**")  # Bold
 
 team_names = [" ","Dominators", "The Dude", "Hello Kitty", "MidKnight Train", "BEATDOWN CREW", "Crusaders",
@@ -318,3 +320,5 @@ st.write(df_transactions)
 
 st.markdown("<span style='color:red; font-size:12px;'>This form allows for 10 total transactions at a time</span>", unsafe_allow_html=True)
 st.markdown("<span style='color:red; font-size:12px;'>Please send all trades to roger.commish.goodell@gmail.com</span>", unsafe_allow_html=True)
+
+st.image("https://images2.minutemediacdn.com/image/upload/c_crop,x_0,y_756,w_2700,h_1518/c_fill,w_1080,ar_16:9,f_auto,q_auto,g_auto/images%2FImagnImages%2Fmmsport%2F63%2F01j398y99wh53tzz4zfm.jpg",use_container_width=True)
