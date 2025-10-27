@@ -4,7 +4,7 @@
 #purpose: repo with fantasy football free agency intake form
 
 #1) Intake
-Intake form developed with VS Code and pushed to Git
+Intake form developed in VS Code and pushed to Git
 Library dependencies
 streamlit - app development library, app is also hosted in st
 os - access local file
