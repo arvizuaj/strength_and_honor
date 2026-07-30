@@ -17,8 +17,9 @@ st.markdown("**Free Agency Intake Form**")  # Bold
 
 team_names = [" ","Dominators", "The Dude", "Hello Kitty", "MidKnight Train", "BEATDOWN CREW", "Crusaders",
                 "Renegades", "Theheartbreakkid", "BENCHWARMERS", "Dreamteam", "Wranglers", "Conquerors" ] 
-options = ['Bid', 'Cut']
+options = ['Bid', 'Cut', 'Trade']
 list_of_transactions = []
+notes = None
 df_transactions = pd.DataFrame(columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
 
 
@@ -34,10 +35,11 @@ selected_option_type = st.selectbox("Please select the transaction type", option
 
 if selected_option_type == 'Bid':
     user_input_salary = st.text_input("Please input your bid",key='first_salary')
-else:
+if selected_option_type == 'Cut'
     user_input_salary = 0
-    st.write("Please Submit Below")
-
+if selected_option_type == 'Trade'
+    notes = st.text_area("Trade Notes (required)",
+                         placeholder="Example: Trading Jacory Croskey-Merritt to Crusaders for Jahymr Gibbs")
 
 #first_entry = st.write("You entered: ({}, {}, {}, {})".format(selected_option_name,user_input_player,selected_option_type,user_input_salary))
 list1 = [selected_option_name, user_input_player,
