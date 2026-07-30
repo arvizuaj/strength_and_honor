@@ -37,7 +37,7 @@ if selected_option_type == 'Bid':
     user_input_salary = st.text_input("Please input your bid",key='first_salary')
 if selected_option_type == 'Cut':
     user_input_salary = 0
-if selected_option_type == 'Trade'
+if selected_option_type == 'Trade':
     notes = st.text_area("Trade Notes (required)",
                          placeholder="Example: Trading Jacory Croskey-Merritt to Crusaders for Jahymr Gibbs")
 
