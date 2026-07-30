@@ -60,7 +60,7 @@ elif selected_option_type == "Trade":
 
 #first_entry = st.write("You entered: ({}, {}, {}, {})".format(selected_option_name,user_input_player,selected_option_type,user_input_salary))
 list1 = [selected_option_name, user_input_player,
-            selected_option_type,user_input_salary, current_dt]
+            selected_option_type,user_input_salary, trade_notes, current_dt]
 temp_df = pd.DataFrame([list1], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
 df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
