@@ -46,7 +46,7 @@ if selected_option_type == "Bid":
 
 elif selected_option_type == "Cut":
     user_input_player = st.text_input("Please type the player name",key='first_selection_player_cut')
-    user_input_salary == 0
+    user_input_salary = 0
 
 elif selected_option_type == "Trade":
     trade_notes = st.text_area(
@@ -54,7 +54,7 @@ elif selected_option_type == "Trade":
         placeholder="Example: Trading Jacory Croskey-Merritt to Crusaders for Jahymr Gibbs",
         key="trade_notes"
     )
-    user_input_salary == 0
+    user_input_salary = 0
 
 
 
