@@ -43,24 +43,28 @@ selected_option_type = st.selectbox("Please select the transaction type", option
 if selected_option_type == "Bid":
     user_input_player = st.text_input("Please type the player name",key='first_selection_player')
     user_input_salary = st.text_input("Please input your bid",key='first_salary')
+    trade_notes = None
 
 elif selected_option_type == "Cut":
     user_input_player = st.text_input("Please type the player name",key='first_selection_player_cut')
     user_input_salary = 0
+    trade_notes = None
 
 elif selected_option_type == "Trade":
+    user_input_player = None
+    user_input_salary = 0
     trade_notes = st.text_area(
         "Trade Notes (required)",
         placeholder="Example: Trading Jacory Croskey-Merritt to Crusaders for Jahymr Gibbs",
         key="trade_notes"
     )
-    user_input_salary = 0
+
 
 
 
 #first_entry = st.write("You entered: ({}, {}, {}, {})".format(selected_option_name,user_input_player,selected_option_type,user_input_salary))
 list1 = [selected_option_name, user_input_player,
-            selected_option_type,user_input_salary, trade_notes, current_dt]
+            selected_option_type, user_input_salary, trade_notes, current_dt]
 temp_df = pd.DataFrame([list1], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
 df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
