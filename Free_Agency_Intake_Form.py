@@ -33,7 +33,7 @@ selected_option_type2 = st.radio(
     "Please select the transaction type",
     options,
     horizontal=True,
-    key="first_trans"
+    key="first_trans2"
 )
 
 #if selected_option_type == 'Bid':
