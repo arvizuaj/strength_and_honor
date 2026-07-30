@@ -41,11 +41,12 @@ selected_option_type = st.selectbox("Please select the transaction type", option
 #    user_input_salary = 0
 
 if selected_option_type == "Bid":
-    selected_player = st.selectbox("Select player", players, key="bid_player")
-    bid_amount = st.number_input("Enter bid amount", min_value=0, key="bid_amount")
+    user_input_player = st.text_input("Please type the player name",key='first_selection_player')
+    user_input_salary = st.text_input("Please input your bid",key='first_salary')
 
 elif selected_option_type == "Cut":
     selected_player = st.selectbox("Select player", players, key="cut_player")
+    user_input_salary == 0
 
 elif selected_option_type == "Trade":
     trade_notes = st.text_area(
@@ -53,6 +54,8 @@ elif selected_option_type == "Trade":
         placeholder="Example: Trading Jacory Croskey-Merritt to Crusaders for Jahymr Gibbs",
         key="trade_notes"
     )
+    user_input_salary == 0
+
 
 
 #first_entry = st.write("You entered: ({}, {}, {}, {})".format(selected_option_name,user_input_player,selected_option_type,user_input_salary))
