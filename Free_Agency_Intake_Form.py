@@ -20,7 +20,7 @@ team_names = [" ","Dominators", "The Dude", "Hello Kitty", "MidKnight Train", "B
 options = ['Bid', 'Cut', 'Trade']
 list_of_transactions = []
 notes = None
-df_transactions = pd.DataFrame(columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
+df_transactions = pd.DataFrame(columns=['Team Name', 'Player', 'Action', 'Salary', 'Trade Notes', 'Timestamp'])
 
 
 #SELECT YOUR TEAM NAME
@@ -29,6 +29,12 @@ st.markdown("<span style='color:red; font-size:14px;'># REMEMBER TO SELECT YOUR 
 selected_option_name = st.selectbox("Please select your team name", team_names)
 
 selected_option_type = st.selectbox("Please select the transaction type", options,key='first_trans')
+selected_option_type2 = st.radio(
+    "Please select the transaction type",
+    options,
+    horizontal=True,
+    key="first_trans"
+)
 
 #if selected_option_type == 'Bid':
 #    user_input_salary = st.text_input("Please input your bid",key='first_salary')
