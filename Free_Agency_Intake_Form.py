@@ -45,7 +45,7 @@ if selected_option_type == "Bid":
     user_input_salary = st.text_input("Please input your bid",key='first_salary')
 
 elif selected_option_type == "Cut":
-    selected_player = st.selectbox("Select player", players, key="cut_player")
+    user_input_player = st.text_input("Please type the player name",key='first_selection_player_cut')
     user_input_salary == 0
 
 elif selected_option_type == "Trade":
