@@ -28,10 +28,7 @@ df_transactions = pd.DataFrame(columns=['Team Name', 'Player', 'Action', 'Salary
 st.markdown("<span style='color:red; font-size:14px;'># REMEMBER TO SELECT YOUR TEAM NAME BELOW #</span>", unsafe_allow_html=True)
 selected_option_name = st.selectbox("Please select your team name", team_names)
 
-
-user_input_player = st.text_input("Please type the player name",key='first_selection_player')
 selected_option_type = st.selectbox("Please select the transaction type", options,key='first_trans')
-
 
 if selected_option_type == 'Bid':
     user_input_salary = st.text_input("Please input your bid",key='first_salary')
@@ -40,6 +37,11 @@ if selected_option_type == 'Cut':
 if selected_option_type == 'Trade':
     notes = st.text_area("Trade Notes (required)",
                          placeholder="Example: Trading Jacory Croskey-Merritt to Crusaders for Jahymr Gibbs")
+    user_input_salary = 0
+
+if selected_option_type == 'Bid' or selected_option_type == 'Cut':
+    user_input_player = st.text_input("Please type the player name",key='first_selection_player')
+
 
 #first_entry = st.write("You entered: ({}, {}, {}, {})".format(selected_option_name,user_input_player,selected_option_type,user_input_salary))
 list1 = [selected_option_name, user_input_player,
