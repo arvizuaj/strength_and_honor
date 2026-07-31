@@ -28,23 +28,12 @@ df_transactions = pd.DataFrame(columns=['Team Name', 'Player', 'Action', 'Salary
 st.markdown("<span style='color:red; font-size:14px;'># REMEMBER TO SELECT YOUR TEAM NAME BELOW #</span>", unsafe_allow_html=True)
 selected_option_name = st.selectbox("Please select your team name", team_names)
 
-selected_option_type = st.selectbox("Please select the transaction type", options,key='first_trans')
-selected_option_type2 = st.radio(
+selected_option_type = st.radio(
     "Please select the transaction type",
     options,
     horizontal=True,
-    key="first_trans2"
+    key="first_trans"
 )
-
-#if selected_option_type == 'Bid':
-#    user_input_salary = st.text_input("Please input your bid",key='first_salary')
-#    user_input_player = st.text_input("Please type the player name",key='first_selection_player')
-#if selected_option_type == 'Cut':
-#    user_input_salary = 0
-#if selected_option_type == 'Trade':
-#    notes = st.text_area("Trade Notes (required)",
-#                         placeholder="Example: Trading Jacory Croskey-Merritt to Crusaders for Jahymr Gibbs")
-#    user_input_salary = 0
 
 if selected_option_type == "Bid":
     user_input_player = st.text_input("Please type the player name",key='first_selection_player')
@@ -66,8 +55,6 @@ elif selected_option_type == "Trade":
     )
 
 
-
-
 #first_entry = st.write("You entered: ({}, {}, {}, {})".format(selected_option_name,user_input_player,selected_option_type,user_input_salary))
 list1 = [selected_option_name, user_input_player,
             selected_option_type, user_input_salary, trade_notes, current_dt]
@@ -83,19 +70,37 @@ if st.button("+Add Player Transaction", help="Click If You Need to Bid/Cut Anoth
     st.session_state.button_clicked = True
 
 if st.session_state.button_clicked:
-    user_input_player2 = st.text_input("Please type the player name",key='second_selection_player')
-    selected_option_type2 = st.selectbox("Please select the transaction type", options, key='second_trans')
 
-    if selected_option_type2 == 'Bid':
+    selected_option_type2 = st.radio(
+    "Please select the transaction type",
+    options,
+    horizontal=True,
+    key="second_trans"
+    )
+
+    if selected_option_type2 == "Bid":
+        user_input_player2 = st.text_input("Please type the player name",key='second_selection_player')
         user_input_salary2 = st.text_input("Please input your bid",key='second_salary')
-        #st.session_state.show_input = True
-    else:
+        trade_notes2 = None
+
+    elif selected_option_type2 == "Cut":
+        user_input_player2 = st.text_input("Please type the player name",key='second_selection_player_cut')
         user_input_salary2 = 0
-        st.write('Please Submit Below')
+        trade_notes2 = None
+
+    elif selected_option_type2 == "Trade":
+        user_input_player2 = None
+        user_input_salary2 = 0
+        trade_notes2 = st.text_area(
+        "Trade Notes (required)",
+        placeholder="Example: Trading Jacory Croskey-Merritt to Crusaders for Jahymr Gibbs",
+        key="trade_notes2"
+    )
+
 
     list2 = [selected_option_name, user_input_player2,
-            selected_option_type2,user_input_salary2,current_dt]
-    temp_df = pd.DataFrame([list2], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
+            selected_option_type2,user_input_salary2,trade_notes2,current_dt]
+    temp_df = pd.DataFrame([list2], columns=['Team Name', 'Player', 'Action', 'Salary', 'Trade Notes','Timestamp'])
     df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
     #Add Player Transaction 2
@@ -107,19 +112,37 @@ if st.session_state.button_clicked:
         st.session_state.button_clicked2 = True
     
     if st.session_state.button_clicked2:
-        user_input_player3 = st.text_input("Please type the player name",key='third_selection_player')
-        selected_option_type3 = st.selectbox("Please select the transaction type", options, key='third_trans')
 
-        if selected_option_type3 == 'Bid':
-            user_input_salary3 = st.text_input("Please input your bid",key='third_salary')
-            #st.session_state.show_input = True
-        else:
-            user_input_salary3 = 0
-            st.write('Please Submit Below')
+        selected_option_type3 = st.radio(
+            "Please select the transaction type",
+            options,
+            horizontal=True,
+            key="third_trans"
+            )
+        
+        if selected_option_type3 == "Bid":
+                user_input_player3 = st.text_input("Please type the player name",key='third_selection_player')
+                user_input_salary3 = st.text_input("Please input your bid",key='third_salary')
+                trade_notes3 = None
+        
+        elif selected_option_type3 == "Cut":
+                user_input_player3 = st.text_input("Please type the player name",key='third_selection_player_cut')
+                user_input_salary3 = 0
+                trade_notes3 = None
+        
+        elif selected_option_type3 == "Trade":
+                user_input_player3 = None
+                user_input_salary3 = 0
+                trade_notes3 = st.text_area(
+                "Trade Notes (required)",
+                placeholder="Example: Trading Jacory Croskey-Merritt to Crusaders for Jahymr Gibbs",
+                key="trade_notes3"
+            )
+
 
         list3 = [selected_option_name, user_input_player3,
-            selected_option_type3,user_input_salary3,current_dt]
-        temp_df = pd.DataFrame([list3], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
+            selected_option_type3,user_input_salary3,trade_notes3,current_dt]
+        temp_df = pd.DataFrame([list3], columns=['Team Name', 'Player', 'Action', 'Salary', 'Trade Notes', 'Timestamp'])
         df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
 
@@ -132,19 +155,37 @@ if st.session_state.button_clicked:
             st.session_state.button_clicked3 = True
     
         if st.session_state.button_clicked3:
-            user_input_player4 = st.text_input("Please type the player name",key='fourth_selection_player')
-            selected_option_type4 = st.selectbox("Please select the transaction type", options, key='fourth_trans')
 
-            if selected_option_type4 == 'Bid':
+            selected_option_type4 = st.radio(
+                "Please select the transaction type",
+                options,
+                horizontal=True,
+                key="fourth_trans"
+                )
+            
+            if selected_option_type4 == "Bid":
+                user_input_player4 = st.text_input("Please type the player name",key='fourth_selection_player')
                 user_input_salary4 = st.text_input("Please input your bid",key='fourth_salary')
-                #st.session_state.show_input = True
-            else:
+                trade_notes4 = None
+            
+            elif selected_option_type4 == "Cut":
+                user_input_player4 = st.text_input("Please type the player name",key='fourth_selection_player_cut')
                 user_input_salary4 = 0
-                st.write('Please Submit Below')
+                trade_notes4 = None
+            
+            elif selected_option_type4 == "Trade":
+                user_input_player4 = None
+                user_input_salary4 = 0
+                trade_notes4 = st.text_area(
+                "Trade Notes (required)",
+                placeholder="Example: Trading Jacory Croskey-Merritt to Crusaders for Jahymr Gibbs",
+                key="trade_notes4"
+                )
+
 
             list4 = [selected_option_name, user_input_player4,
-            selected_option_type4,user_input_salary4,current_dt]
-            temp_df = pd.DataFrame([list4], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
+            selected_option_type4,user_input_salary4,trade_notes4,current_dt]
+            temp_df = pd.DataFrame([list4], columns=['Team Name', 'Player', 'Action', 'Salary', 'Trade Notes', 'Timestamp'])
             df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
 
@@ -157,19 +198,36 @@ if st.session_state.button_clicked:
                 st.session_state.button_clicked4 = True
     
             if st.session_state.button_clicked4:
-                user_input_player5 = st.text_input("Please type the player name",key='fifth_selection_player')
-                selected_option_type5 = st.selectbox("Please select the transaction type", options, key='fifth_trans')
 
-                if selected_option_type5 == 'Bid':
+                selected_option_type5 = st.radio(
+                    "Please select the transaction type",
+                    options,
+                    horizontal=True,
+                    key="fifth_trans"
+                    )
+                
+                if selected_option_type5 == "Bid":
+                    user_input_player5 = st.text_input("Please type the player name",key='fifth_selection_player')
                     user_input_salary5 = st.text_input("Please input your bid",key='fifth_salary')
-                    #st.session_state.show_input = True
-                else:
+                    trade_notes5 = None
+                
+                elif selected_option_type5 == "Cut":
+                    user_input_player5 = st.text_input("Please type the player name",key='fifth_selection_player_cut')
                     user_input_salary5 = 0
-                    st.write('Please Submit Below')
+                    trade_notes5 = None
+                
+                elif selected_option_type5 == "Trade":
+                    user_input_player5 = None
+                    user_input_salary5 = 0
+                    trade_notes5 = st.text_area(
+                    "Trade Notes (required)",
+                    placeholder="Example: Trading Jacory Croskey-Merritt to Crusaders for Jahymr Gibbs",
+                    key="trade_notes5"
+                    )
 
                 list5 = [selected_option_name, user_input_player5,
-                selected_option_type5,user_input_salary5,current_dt]
-                temp_df = pd.DataFrame([list5], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
+                selected_option_type5,user_input_salary5,trade_notes5,current_dt]
+                temp_df = pd.DataFrame([list5], columns=['Team Name', 'Player', 'Action', 'Salary', 'Trade Notes', 'Timestamp'])
                 df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
 
@@ -183,19 +241,38 @@ if st.session_state.button_clicked:
                     st.session_state.button_clicked5 = True
     
                 if st.session_state.button_clicked5:
-                    user_input_player6 = st.text_input("Please type the player name",key='sixth_selection_player')
-                    selected_option_type6 = st.selectbox("Please select the transaction type", options, key='sixth_trans')
 
-                    if selected_option_type6 == 'Bid':
+                    selected_option_type6 = st.radio(
+                        "Please select the transaction type",
+                        options,
+                        horizontal=True,
+                        key="sixth_trans"
+                        )
+                    
+                    if selected_option_type6 == "Bid":
+                        user_input_player6 = st.text_input("Please type the player name",key='sixth_selection_player')
                         user_input_salary6 = st.text_input("Please input your bid",key='sixth_salary')
-                        #st.session_state.show_input = True
-                    else:
+                        trade_notes6 = None
+                    
+                    elif selected_option_type6 == "Cut":
+                        user_input_player6 = st.text_input("Please type the player name",key='sixth_selection_player_cut')
                         user_input_salary6 = 0
-                        st.write('Please Submit Below')
+                        trade_notes6 = None
+                    
+                    elif selected_option_type6 == "Trade":
+                        user_input_player6 = None
+                        user_input_salary6 = 0
+                        trade_notes6 = st.text_area(
+                        "Trade Notes (required)",
+                        placeholder="Example: Trading Jacory Croskey-Merritt to Crusaders for Jahymr Gibbs",
+                        key="trade_notes6"
+                        )
+
+
 
                     list6 = [selected_option_name, user_input_player6,
-                    selected_option_type6,user_input_salary6,current_dt]
-                    temp_df = pd.DataFrame([list6], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
+                    selected_option_type6,user_input_salary6,trade_notes6,current_dt]
+                    temp_df = pd.DataFrame([list6], columns=['Team Name', 'Player', 'Action', 'Salary', 'Trade Notes', 'Timestamp'])
                     df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
                     #Add Player Transaction 6
@@ -207,19 +284,36 @@ if st.session_state.button_clicked:
                         st.session_state.button_clicked6 = True
     
                     if st.session_state.button_clicked6:
-                        user_input_player7 = st.text_input("Please type the player name",key='sev_selection_player')
-                        selected_option_type7 = st.selectbox("Please select the transaction type", options, key='sev_trans')
 
-                        if selected_option_type7 == 'Bid':
-                            user_input_salary7 = st.text_input("Please input your bid",key='sev_salary')
-                            #st.session_state.show_input = True
-                        else:
+                        selected_option_type7 = st.radio(
+                            "Please select the transaction type",
+                            options,
+                            horizontal=True,
+                            key="seventh_trans"
+                            )
+                        
+                        if selected_option_type7 == "Bid":
+                            user_input_player7 = st.text_input("Please type the player name",key='seventh_selection_player')
+                            user_input_salary7 = st.text_input("Please input your bid",key='seventh_salary')
+                            trade_notes7 = None
+                        
+                        elif selected_option_type7 == "Cut":
+                            user_input_player7 = st.text_input("Please type the player name",key='seventh_selection_player_cut')
                             user_input_salary7 = 0
-                            st.write('Please Submit Below')
+                            trade_notes7 = None
+                        
+                        elif selected_option_type7 == "Trade":
+                            user_input_player7 = None
+                            user_input_salary7 = 0
+                            trade_notes7 = st.text_area(
+                            "Trade Notes (required)",
+                            placeholder="Example: Trading Jacory Croskey-Merritt to Crusaders for Jahymr Gibbs",
+                            key="trade_notes7"
+                            )
 
                         list7 = [selected_option_name, user_input_player7,
-                        selected_option_type7,user_input_salary7,current_dt]
-                        temp_df = pd.DataFrame([list7], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
+                        selected_option_type7,user_input_salary7,trade_notes7,current_dt]
+                        temp_df = pd.DataFrame([list7], columns=['Team Name', 'Player', 'Action', 'Salary', 'Trade Notes', 'Timestamp'])
                         df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
                     
@@ -232,19 +326,36 @@ if st.session_state.button_clicked:
                             st.session_state.button_clicked7 = True
     
                         if st.session_state.button_clicked7:
-                            user_input_player8 = st.text_input("Please type the player name",key='eigth_selection_player')
-                            selected_option_type8 = st.selectbox("Please select the transaction type", options, key='eigth_trans')
 
-                            if selected_option_type8 == 'Bid':
-                                user_input_salary8 = st.text_input("Please input your bid",key='eigth_salary')
-                                #st.session_state.show_input = True
-                            else:
+                            selected_option_type8 = st.radio(
+                                "Please select the transaction type",
+                                options,
+                                horizontal=True,
+                                key="eighth_trans"
+                                )
+                        
+                            if selected_option_type8 == "Bid":
+                                user_input_player8 = st.text_input("Please type the player name",key='eighth_selection_player')
+                                user_input_salary8 = st.text_input("Please input your bid",key='eighth_salary')
+                                trade_notes8 = None
+                        
+                            elif selected_option_type8 == "Cut":
+                                user_input_player8 = st.text_input("Please type the player name",key='eighth_selection_player_cut')
                                 user_input_salary8 = 0
-                                st.write('Please Submit Below')
+                                trade_notes8 = None
+                        
+                            elif selected_option_type8 == "Trade":
+                                user_input_player8 = None
+                                user_input_salary8 = 0
+                                trade_notes8 = st.text_area(
+                                "Trade Notes (required)",
+                                placeholder="Example: Trading Jacory Croskey-Merritt to Crusaders for Jahymr Gibbs",
+                                key="trade_notes8"
+                                )
 
                             list8 = [selected_option_name, user_input_player8,
-                            selected_option_type8,user_input_salary8,current_dt]
-                            temp_df = pd.DataFrame([list8], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
+                            selected_option_type8,user_input_salary8,trade_notes8,current_dt]
+                            temp_df = pd.DataFrame([list8], columns=['Team Name', 'Player', 'Action', 'Salary', 'Trade Notes', 'Timestamp'])
                             df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
                             #Add Player Transaction 8
@@ -256,19 +367,36 @@ if st.session_state.button_clicked:
                                 st.session_state.button_clicked8 = True
     
                             if st.session_state.button_clicked8:
-                                user_input_player9 = st.text_input("Please type the player name",key='ninth_selection_player')
-                                selected_option_type9 = st.selectbox("Please select the transaction type", options, key='ninth_trans')
 
-                                if selected_option_type9 == 'Bid':
+                                selected_option_type9 = st.radio(
+                                    "Please select the transaction type",
+                                    options,
+                                    horizontal=True,
+                                    key="ninth_trans"
+                                    )
+                        
+                                if selected_option_type9 == "Bid":
+                                    user_input_player9 = st.text_input("Please type the player name",key='ninth_selection_player')
                                     user_input_salary9 = st.text_input("Please input your bid",key='ninth_salary')
-                                    #st.session_state.show_input = True
-                                else:
+                                    trade_notes9 = None
+                        
+                                elif selected_option_type9 == "Cut":
+                                    user_input_player9 = st.text_input("Please type the player name",key='ninth_selection_player_cut')
                                     user_input_salary9 = 0
-                                    st.write('Please Submit Below')
+                                    trade_notes9 = None
+                        
+                                elif selected_option_type9 == "Trade":
+                                    user_input_player9 = None
+                                    user_input_salary9 = 0
+                                    trade_notes9 = st.text_area(
+                                    "Trade Notes (required)",
+                                    placeholder="Example: Trading Jacory Croskey-Merritt to Crusaders for Jahymr Gibbs",
+                                    key="trade_notes9"
+                                    )
 
                                 list9 = [selected_option_name, user_input_player9,
-                                selected_option_type9,user_input_salary9,current_dt]
-                                temp_df = pd.DataFrame([list9], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
+                                selected_option_type9,user_input_salary9,trade_notes9,current_dt]
+                                temp_df = pd.DataFrame([list9], columns=['Team Name', 'Player', 'Action', 'Salary', 'Trade Notes', 'Timestamp'])
                                 df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
 
                                 #Add Player Transaction 9
@@ -280,19 +408,36 @@ if st.session_state.button_clicked:
                                     st.session_state.button_clicked9 = True
     
                                 if st.session_state.button_clicked9:
-                                    user_input_player10 = st.text_input("Please type the player name",key='tenth_selection_player')
-                                    selected_option_type10 = st.selectbox("Please select the transaction type", options, key='tenth_trans')
 
-                                    if selected_option_type10 == 'Bid':
+                                    selected_option_type10 = st.radio(
+                                        "Please select the transaction type",
+                                        options,
+                                        horizontal=True,
+                                        key="tenth_trans"
+                                        )
+                        
+                                    if selected_option_type10 == "Bid":
+                                        user_input_player10 = st.text_input("Please type the player name",key='tenth_selection_player')
                                         user_input_salary10 = st.text_input("Please input your bid",key='tenth_salary')
-                                        #st.session_state.show_input = True
-                                    else:
+                                        trade_notes10 = None
+                        
+                                    elif selected_option_type10 == "Cut":
+                                        user_input_player10 = st.text_input("Please type the player name",key='tenth_selection_player_cut')
                                         user_input_salary10 = 0
-                                        st.write('Please Submit Below')
+                                        trade_notes10 = None
+                        
+                                    elif selected_option_type10 == "Trade":
+                                        user_input_player10 = None
+                                        user_input_salary10 = 0
+                                        trade_notes10 = st.text_area(
+                                        "Trade Notes (required)",
+                                        placeholder="Example: Trading Jacory Croskey-Merritt to Crusaders for Jahymr Gibbs",
+                                        key="trade_notes10"
+                                        )
 
                                     list10 = [selected_option_name, user_input_player10,
-                                    selected_option_type10,user_input_salary10,current_dt]
-                                    temp_df = pd.DataFrame([list10], columns=['Team Name', 'Player', 'Action', 'Salary', 'Timestamp'])
+                                    selected_option_type10,user_input_salary10,trade_notes10,current_dt]
+                                    temp_df = pd.DataFrame([list10], columns=['Team Name', 'Player', 'Action', 'Salary', 'Trade Notes', 'Timestamp'])
                                     df_transactions = pd.concat([df_transactions, temp_df], ignore_index=True)
  
 
