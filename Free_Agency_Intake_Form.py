@@ -493,6 +493,5 @@ if st.button("Submit!",type="primary",help="Submit When You're Done With All You
 st.write(df_transactions)
 
 st.markdown("<span style='color:red; font-size:12px;'>This form allows for 10 total transactions at a time</span>", unsafe_allow_html=True)
-st.markdown("<span style='color:red; font-size:12px;'>Please send all trades to roger.commish.goodell@gmail.com</span>", unsafe_allow_html=True)
 
 st.image("https://img.apmcdn.org/bbdbc1df7f5802e5cd2ced5e75ed432e509a95f5/uncropped/889525-20250109-foreman-1200.png",use_container_width=True)
