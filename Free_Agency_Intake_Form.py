@@ -15,7 +15,7 @@ st.image("https://cdn.mississippitoday.org/uploads/2017/07/22030122/AP_882940498
 
 st.markdown("**Free Agency Intake Form**")  # Bold
 
-team_names = [" ","Dominators", "The Dude", "Hello Kitty", "MidKnight Train", "BEATDOWN CREW", "Crusaders",
+team_names = [" ","Dominators", "The Dude", "Football Mama", "MidKnight Train", "BEATDOWN CREW", "Crusaders",
                 "Renegades", "Theheartbreakkid", "BENCHWARMERS", "Dreamteam", "Wranglers", "Conquerors" ] 
 options = ['Bid', 'Cut', 'Trade']
 list_of_transactions = []
